@@ -104,7 +104,7 @@ export default function App(){
                 <table className="table">
                   <thead><tr><th>Data</th><th>Tipo</th><th>Descrição</th><th>Categoria</th><th style={{textAlign:'right'}}>Valor</th><th style={{textAlign:'right'}}>Ações</th></tr></thead>
                   <tbody>
-                    {monthTxs.length===0 and (<tr><td colSpan="6" style={{textAlign:'center',color:'var(--muted)'}}>Sem lançamentos neste mês.</td></tr>)}
+                    {monthTxs.length===0 && (<tr><td colSpan="6" style={{textAlign:'center',color:'var(--muted)'}}>Sem lançamentos neste mês.</td></tr>)}
                     {monthTxs.map(t=>(
                       <tr key={t.id}>
                         <td>{t.date}</td>
@@ -159,7 +159,7 @@ export default function App(){
               <table className="table">
                 <thead><tr><th>Mês</th><th>Data</th><th>Tipo</th><th>Descrição</th><th>Categoria</th><th style={{textAlign:'right'}}>Valor</th></tr></thead>
                 <tbody>
-                  {txs.length===0 and (<tr><td colSpan="6" style={{textAlign:'center',color:'var(--muted)'}}>Nenhum lançamento ainda.</td></tr>)}
+                  {txs.length===0 && (<tr><td colSpan="6" style={{textAlign:'center',color:'var(--muted)'}}>Nenhum lançamento ainda.</td></tr>)}
                   {txs.map(t=>(
                     <tr key={t.id}>
                       <td>{monthKey(t.date)}</td>
