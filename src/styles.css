@@ -1,38 +1,67 @@
-
 :root{
   --brand:#ffca0f; --bg:#0c0c0c; --card:#111; --muted:#9ca3af; --text:#f7f7f7; --border:#232323;
-  --container: 720px;
+  --container: 720px; /* mesma largura do header e do corpo */
 }
 *{box-sizing:border-box}
 html,body,#root{height:100%}
 body{margin:0;background:#0a0a0a;color:var(--text);font-family:Inter,system-ui,Arial,Helvetica,sans-serif}
+
 .header{position:sticky;top:0;z-index:10;background:linear-gradient(0deg, rgba(0,0,0,0.6), rgba(0,0,0,0.6)), var(--brand);color:#111}
 .wrap{max-width:var(--container);margin:0 auto;padding:12px}
+
+/* conteúdo com a mesma largura do header */
 .content{max-width:var(--container);margin:0 auto}
+
 .brand{display:flex;align-items:center;gap:10px}
 .brand img{width:36px;height:36px;border-radius:8px;background:#000}
 .h1{font-weight:800;font-size:18px;margin:0}
+
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px}
 .row{display:flex;gap:10px}
 .col{flex:1}
 .label{font-size:12px;color:var(--muted);margin-bottom:4px;display:block}
 .input, select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);background:#0f0f0f;color:var(--text)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;border:0;background:var(--brand);color:#111;font-weight:700;cursor:pointer}
-.btn.ghost{background:#1a1a1a;color:#fff;border:1px solid var(--border)}
+.btn.ghost{background:#1a1a1a;color:var(--text);border:1px solid var(--border)}
 .btn.danger{background:#ef4444;color:#fff}
+.btn.sm{padding:8px 10px;border-radius:10px;font-size:12px}
+
 .kpi{padding:12px;border:1px solid var(--border);border-radius:12px;background:#0e0e0e}
 .grid{display:grid;gap:12px}
+
 .tabs{display:flex;gap:8px;overflow:auto}
 .tab{flex:1 0 auto;padding:10px 12px;border-radius:999px;border:1px solid var(--border);background:#0f0f0f;color:#fff}
 .tab.active{background:var(--brand);color:#111;font-weight:800}
+
 .table{width:100%;border-collapse:collapse}
-.table th,.table td{padding:10px;border-bottom:1px solid var(--border);font-size:14px}
+.table th,.table td{padding:10px;border-bottom:1px solid var(--border);font-size:14px;word-break:break-word}
 .badge{font-size:12px;padding:2px 8px;border-radius:999px}
 .income{background:#22c55e20;color:#22c55e}
 .expense{background:#ef444420;color:#ef4444}
-.footer{padding:20px 0;text-align:center;color:#9ca3af;font-size:12px}
+
+.footer{padding:20px 0;text-align:center;color:var(--muted);font-size:12px}
+
+/* rolagem horizontal só na tabela */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px}
+
+/* modo compacto no mobile */
+@media (max-width: 420px){
+  .table th, .table td { padding:8px; font-size:13px }
+  /* esconder "Tipo" (coluna 2) e "Categoria" (coluna 4) */
+  .table th:nth-child(2), .table td:nth-child(2){ display:none }
+  .table th:nth-child(4), .table td:nth-child(4){ display:none }
+  .table td:last-child .btn{ padding:8px 10px; font-size:12px }
+}
+
+/* telas muito estreitas: esconder "Data" (coluna 1) */
+@media (max-width: 360px){
+  .table th:nth-child(1), .table td:nth-child(1){ display:none }
+}
+
+/* desktop abre junto (header e corpo alinhados) */
 @media (min-width: 800px){
-  :root{ --container: 960px; }
+  .wrap{max-width:1120px}
+  .content{max-width:1120px}
   .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
   .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
